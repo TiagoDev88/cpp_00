@@ -8,7 +8,8 @@ You think you know integers and floating-point numbers. How cute.
 Please read this 3 pages article (1, 2, 3) to discover that you don’t. Go on, read it.
 Until today, every number you used in your code was basically either an integer or a
 floating-point number, or any of their variants (short, char, long, double, and so forth).
-After reading the article above, it’s safe to assume that integers and floating-point numbers have opposite characteristics.
+After reading the article above, it’s safe to assume that integers
+ and floating-point numbers have opposite characteristics.
 But today, things will change. You are going to discover a new and awesome number
 type: fixed-point numbers! Forever missing from the scalar types of most languages,
 fixed-point numbers offer a valuable balance between performance, accuracy, range and
