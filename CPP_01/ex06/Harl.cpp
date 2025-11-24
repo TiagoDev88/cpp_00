@@ -9,25 +9,25 @@ Harl::~Harl(void) {};
 
 void Harl::debug( void )
 {
-    std::cout << "DEBUG\n";
+    std::cout << "[ DEBUG ]\n";
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
 }
 
 void Harl::info( void )
 {
-    std::cout << "INFO\n";
+    std::cout << "[ INFO ]\n";
     std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 }
 
 void Harl::warning( void )
 {
-    std::cout << "WARNING\n";
+    std::cout << "[ WARNING ]\n";
     std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years, whereas you started working here just last month." << std::endl;
 }
 
 void Harl::error( void )
 {
-    std::cout << "ERROR\n";
+    std::cout << "[ ERROR ]\n";
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
@@ -48,20 +48,25 @@ void Harl::complain(std::string level)
 
     switch (i)
     {
-    case 0:
-        (this->*input[i])();
+    case 0: // DEBUG
+        (this->*input[0])();
+        (this->*input[1])();
+        (this->*input[2])();
+        (this->*input[3])();
         break;
-    case 1:
-        (this->*input[i])();
+    case 1: // INFO
+        (this->*input[1])();
+        (this->*input[2])();
+        (this->*input[3])();
         break;
-    case 2:
-        (this->*input[i])();
+    case 2: //WARNING
+        (this->*input[2])();
+        (this->*input[3])();
         break;
-    case 3:
-        (this->*input[i])();
+    case 3: // ERROR
+        (this->*input[3])();
         break;
     default:
         std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-        break;
     }
 }
