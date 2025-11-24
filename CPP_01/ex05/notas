@@ -37,9 +37,11 @@ depending on the level passed as a parameter:
 
 void complain( std::string level );
 
-The goal of this exercise is to use pointers to member functions. This is not a
-suggestion. Harl has to complain without using a forest of if/else if/else. He doesn’t
-think twice!
+The goal of this exercise is to use pointers to member functions.
+This is not a suggestion.
+Harl has to complain without using a forest of if/else if/else.
+He doesn’t think twice!
 
-Create and turn in tests to show that Harl complains a lot. You can use the examples
-of comments listed above in the subject or choose to use comments of your own.
+Create and turn in tests to show that Harl complains a lot.
+You can use the examples of comments listed above in the
+subject or choose to use comments of your own.
