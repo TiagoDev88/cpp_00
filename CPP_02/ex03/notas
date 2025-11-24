@@ -1,8 +1,7 @@
 Exercise 03: BSP
 
 Turn-in directory: ex03/
-Files to turn in: Makefile, main.cpp, Fixed.{h, hpp}, Fixed.cpp,
-Point.{h, hpp}, Point.cpp, bsp.cpp
+Files to turn in: Makefile, main.cpp, Fixed.{h, hpp}, Fixed.cpp, Point.{h, hpp}, Point.cpp, bsp.cpp
 Allowed functions: roundf (from <cmath>)
 
 Now that you have a functional Fixed class, it would be nice to use it.
