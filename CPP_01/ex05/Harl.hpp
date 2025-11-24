@@ -1,6 +1,7 @@
 
 
 #include <string>
+#include <iostream>
 
 class Harl
 {
@@ -13,5 +14,5 @@ class Harl
     public:
     Harl(void);
     ~Harl(void);
-    void complain( std::string level );
+    void complain(std::string level);
 };
