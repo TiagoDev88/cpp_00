@@ -15,6 +15,11 @@ Fixed& Fixed::operator=(const Fixed& other)
     return *this;
 }
 
+Fixed& Fixed::operator<<(const Fixed& other)
+{
+
+}
+
 Fixed::Fixed(const Fixed& other) 
 {
     std::cout << "Copy constructor called" << std::endl;
@@ -37,3 +42,12 @@ void Fixed::setRawBits(int const raw)
     this->_fixPoint = raw;
 }
 
+float Fixed::toFloat(void) const
+{
+    std::cout << "Float constructor called" << std::endl;
+}
+
+int Fixed::toInt(void) const
+{
+    std::cout << "Int constructor called" << std::endl;
+}
