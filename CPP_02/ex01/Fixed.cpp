@@ -7,12 +7,12 @@ Fixed::Fixed() : _fixPoint(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int value) : _fixPoint(value << _fracBits)
+Fixed::Fixed(const int value) : _fixPoint(value << _fracBits) // value << 8 is value * 256
 {
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float value) : _fixPoint(roundf(value *(1 >> _fracBits)))
+Fixed::Fixed(const float value) : _fixPoint(roundf(value *(1 << _fracBits))) // (1 << _fracBits) = 256 , value * 256
 {
     std::cout << "Float constructor called" << std::endl;
 }
@@ -49,10 +49,10 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-    return _fixPoint;
+    return (static_cast<float>(_fixPoint) / static_cast<float>(1 << _fracBits)); // _fixPoint / 256.0f
 }
 
 int Fixed::toInt(void) const
 {
-    return _fixPoint;
+    return (_fixPoint >> _fracBits); // _fixPoint / 256, because 2^8 = 256 , so we shift right by 8 bits
 }
