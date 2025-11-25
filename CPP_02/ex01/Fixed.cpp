@@ -7,17 +7,22 @@ Fixed::Fixed() : _fixPoint(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed(const int value) : _fixPoint(value << _fracBits)
+{
+    std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float value) : _fixPoint(roundf(value *(1 >> _fracBits)))
+{
+    std::cout << "Float constructor called" << std::endl;
+}
+
 Fixed& Fixed::operator=(const Fixed& other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
         this->_fixPoint = other.getRawBits();
     return *this;
-}
-
-Fixed& Fixed::operator<<(const Fixed& other)
-{
-
 }
 
 Fixed::Fixed(const Fixed& other) 
@@ -44,10 +49,10 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-    std::cout << "Float constructor called" << std::endl;
+    return _fixPoint;
 }
 
 int Fixed::toInt(void) const
 {
-    std::cout << "Int constructor called" << std::endl;
+    return _fixPoint;
 }

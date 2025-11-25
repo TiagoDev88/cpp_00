@@ -11,14 +11,14 @@ class Fixed
     public:
     //Default constructor
     Fixed();
-    //constructor with param
+    //constructor with int
     Fixed(const int value);
+    //constructor with float
+    Fixed(const float value);
     //copy constructor, The constructor is called when create a new object from another.
     Fixed(const Fixed& other);
     //copy assignment, Copy data from one object to another existing one
     Fixed& operator=(const Fixed& other);
-    //copy assignment, 
-    Fixed& operator<<(const Fixed& other); 
     //Destructor
     ~Fixed();
 
