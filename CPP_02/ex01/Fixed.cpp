@@ -7,7 +7,7 @@ Fixed::Fixed() : _fixPoint(0)
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int value) : _fixPoint(value << _fracBits) // value << 8 is value * 256
+Fixed::Fixed(const int value) : _fixPoint(value << _fracBits) // value << 8 is value * 256, because 2^8 = 256 , so we shift left by 8 bits
 {
     std::cout << "Int constructor called" << std::endl;
 }
@@ -38,7 +38,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return this->_fixPoint;
 }
 
@@ -49,10 +48,16 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-    return (static_cast<float>(_fixPoint) / static_cast<float>(1 << _fracBits)); // _fixPoint / 256.0f
+    return (static_cast<float>(this->_fixPoint) / (1 << _fracBits)); // _fixPoint / 256.0f
 }
 
 int Fixed::toInt(void) const
 {
-    return (_fixPoint >> _fracBits); // _fixPoint / 256, because 2^8 = 256 , so we shift right by 8 bits
+    return (this->_fixPoint >> _fracBits); // _fixPoint / 256, because 2^8 = 256 , so we shift right by 8 bits
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& other)// const because Fixed is const value or not
+{
+    os << other.toFloat();
+    return os;
 }
