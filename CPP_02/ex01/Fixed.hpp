@@ -1,3 +1,5 @@
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
 #include <ostream>
 #include <iostream>
@@ -18,16 +20,17 @@ class Fixed
     Fixed(const float value);
     //copy constructor, The constructor is called when create a new object from another.
     Fixed(const Fixed& other);
-    //copy assignment, Copy data from one object to another existing one
-    Fixed& operator=(const Fixed& other);
     //Destructor
     ~Fixed();
+    //copy assignment, Copy data from one object to another existing one
+    Fixed& operator=(const Fixed& other);
 
     int getRawBits(void) const;
     void setRawBits(int const raw);
-
     float toFloat( void ) const;
     int toInt( void ) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& other);
+
+#endif
