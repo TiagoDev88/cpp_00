@@ -25,6 +25,37 @@ class Fixed
     //copy assignment, Copy data from one object to another existing one
     Fixed& operator=(const Fixed& other);
 
+    //comparison operators
+    bool operator>(const Fixed& other) const;
+    bool operator<(const Fixed& other) const;
+    bool operator>=(const Fixed& other) const;
+    bool operator<=(const Fixed& other) const;
+    bool operator==(const Fixed& other) const;
+    bool operator!=(const Fixed& other) const;
+
+    //arithmetic operators
+    Fixed operator+(const Fixed& other) const;
+    Fixed operator-(const Fixed& other) const;
+    Fixed operator*(const Fixed& other) const;
+    Fixed operator/(const Fixed& other) const;
+
+    //increment/decrement operators
+    //pre-increment
+    Fixed& operator++();
+    //post-increment
+    Fixed operator++(int);
+    //pre-decrement
+    Fixed& operator--();
+    //post-decrement
+    Fixed operator--(int);
+
+    //min and max functions
+    static Fixed& min(Fixed& a, Fixed& b);
+    static const Fixed& min(const Fixed& a, const Fixed& b);
+    static Fixed& max(Fixed& a, Fixed& b);
+    static const Fixed& max(const Fixed& a, const Fixed& b);
+
+    //member functions
     int getRawBits(void) const;
     void setRawBits(int const raw);
     float toFloat( void ) const;

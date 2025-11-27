@@ -60,3 +60,129 @@ std::ostream& operator<<(std::ostream& os, const Fixed& other)
     os << other.toFloat();
     return os;
 }
+
+//comparison operators
+bool Fixed::operator>(const Fixed& other) const
+{
+    if (this->getRawBits() > other.getRawBits())
+        return (true);
+    else
+        return (false);
+}
+
+bool Fixed::operator<(const Fixed& other) const
+{
+    if (this->getRawBits() < other.getRawBits())
+        return true;
+    else
+        return false;
+}
+
+bool Fixed::operator>=(const Fixed& other) const
+{
+    if (this->getRawBits() >= other.getRawBits())
+        return true;
+    else
+        return false;
+}
+
+bool Fixed::operator<=(const Fixed& other) const
+{
+    if (this->getRawBits() <= other.getRawBits())
+        return true;
+    else
+        return false;
+}
+
+bool Fixed::operator==(const Fixed& other) const
+{
+    if (this->getRawBits() == other.getRawBits())
+        return true;
+    else
+        return false;
+}
+
+bool Fixed::operator!=(const Fixed& other) const
+{
+    if (this->getRawBits() != other.getRawBits())
+        return true;
+    else
+        return false;
+}
+
+//arithmetic operators
+Fixed Fixed::operator+(const Fixed& other) const
+{
+    Fixed tmp = this->getRawBits() + other.getRawBits();
+    return (tmp);
+}
+
+Fixed Fixed::operator-(const Fixed& other) const
+{
+    Fixed tmp = this->getRawBits() - other.getRawBits();
+    return (tmp);
+}
+
+Fixed Fixed::operator*(const Fixed& other) const
+{
+    Fixed tmp = this->getRawBits() * other.getRawBits();
+    return (tmp);
+}
+
+Fixed Fixed::operator/(const Fixed& other) const
+{
+    Fixed tmp = this->getRawBits() / other.getRawBits();
+    return (tmp);
+}
+
+//increment/decrement operators
+//pre-increment
+Fixed& Fixed::operator++()
+{
+    this->_fixPoint++;
+    return (*this);
+}
+
+//post-increment
+Fixed Fixed::operator++(int)
+{
+    Fixed tmp = *this;
+    this->_fixPoint++;
+    return (tmp);
+}
+
+//pre-decrement
+Fixed& Fixed::operator--()
+{
+    this->_fixPoint--;
+    return (*this);
+}
+
+//post-decrement
+Fixed Fixed::operator--(int)
+{
+    Fixed tmp = *this;
+    this->_fixPoint--;
+    return (tmp);
+}
+
+// //min and max functions
+// static Fixed& min(Fixed& a, Fixed& b)
+// {
+
+// }
+
+// static const Fixed& min(const Fixed& a, const Fixed& b)
+// {
+
+// }
+
+// static Fixed& max(Fixed& a, Fixed& b)
+// {
+
+// }
+
+// static const Fixed& max(const Fixed& a, const Fixed& b)
+// {
+
+// }
