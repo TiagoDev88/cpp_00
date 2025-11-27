@@ -8,7 +8,7 @@ class Fixed
 {
     private:
     int _fixPoint;
-    static const int _fracBits = 8;
+    static const int _fracBits;
 
     public:
     //Default constructor

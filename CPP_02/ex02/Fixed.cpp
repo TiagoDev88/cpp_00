@@ -1,37 +1,26 @@
 
 #include "Fixed.hpp"
+const int Fixed::_fracBits = 8;
 
-Fixed::Fixed() : _fixPoint(0)
-{
-    std::cout << "Default constructor called" << std::endl;
-}
 
-Fixed::Fixed(const float value)
-{
-    this->_fixPoint = roundf(value * (1 << _fracBits));
-}
+Fixed::Fixed() : _fixPoint(0) {}
+
+// (1 << _fracBits) = 256 , value * 256
+Fixed::Fixed(const float value) : _fixPoint(static_cast<int>(roundf(value * (1 << Fixed::_fracBits)))) {}
 
 Fixed::Fixed(const int value)
 {
-    std::cout << "int constructor\n";
-    this->_fixPoint = (value << _fracBits);
-}
-Fixed::~Fixed() 
-{
-    std::cout << "Destructor called" << std::endl;
+    this->_fixPoint = (value << Fixed::_fracBits);
 }
 
-Fixed::Fixed(const Fixed& other) : _fixPoint(other.getRawBits())
-{
-    std::cout << "Copy constructor called" << std::endl;
-    *this = other;
-}
+Fixed::~Fixed() {}
+
+Fixed::Fixed(const Fixed& other) : _fixPoint(other._fixPoint) {}
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
-        this->_fixPoint = other.getRawBits();
+        this->_fixPoint = other._fixPoint;
     return *this;
 }
 
@@ -45,14 +34,14 @@ void Fixed::setRawBits(int const raw)
     this->_fixPoint = raw;
 }
 
-float Fixed::toFloat( void ) const
+float Fixed::toFloat(void) const
 {
-    return (static_cast<float>(this->_fixPoint) / (1 << _fracBits));
+    return (static_cast<float>(this->_fixPoint) / (1 << Fixed::_fracBits));
 }
 
 int Fixed::toInt( void ) const
 {
-    return (_fixPoint >> _fracBits);
+    return (_fixPoint >> Fixed::_fracBits);
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& other)
@@ -113,25 +102,31 @@ bool Fixed::operator!=(const Fixed& other) const
 //arithmetic operators
 Fixed Fixed::operator+(const Fixed& other) const
 {
-    Fixed tmp = this->getRawBits() + other.getRawBits();
+    Fixed tmp;
+    tmp._fixPoint = this->_fixPoint + other._fixPoint;
     return (tmp);
 }
 
 Fixed Fixed::operator-(const Fixed& other) const
 {
-    Fixed tmp = this->getRawBits() - other.getRawBits();
+    Fixed tmp;
+    tmp._fixPoint = this->_fixPoint - other._fixPoint;
     return (tmp);
 }
 
+// multiply and then shift right by _fracBits to maintain precision
 Fixed Fixed::operator*(const Fixed& other) const
 {
-    Fixed tmp = this->getRawBits() * other.getRawBits();
-    return (tmp);
+    Fixed result;
+    result._fixPoint = ((this->_fixPoint * other._fixPoint) >> Fixed::_fracBits);
+    return result;
 }
-
+// shift _fixPoint left by _fracBits before division to maintain precision
+// then perform the division and return the result
 Fixed Fixed::operator/(const Fixed& other) const
 {
-    Fixed tmp = this->getRawBits() / other.getRawBits();
+    Fixed tmp;
+    tmp._fixPoint = ((this->_fixPoint << Fixed::_fracBits) / other._fixPoint);
     return (tmp);
 }
 
@@ -139,7 +134,7 @@ Fixed Fixed::operator/(const Fixed& other) const
 //pre-increment
 Fixed& Fixed::operator++()
 {
-    this->_fixPoint++;
+    ++this->_fixPoint;
     return (*this);
 }
 
@@ -154,7 +149,7 @@ Fixed Fixed::operator++(int)
 //pre-decrement
 Fixed& Fixed::operator--()
 {
-    this->_fixPoint--;
+    --this->_fixPoint;
     return (*this);
 }
 
@@ -166,23 +161,35 @@ Fixed Fixed::operator--(int)
     return (tmp);
 }
 
-// //min and max functions
-// static Fixed& min(Fixed& a, Fixed& b)
-// {
+//min and max functions
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
 
-// }
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
 
-// static const Fixed& min(const Fixed& a, const Fixed& b)
-// {
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
 
-// }
-
-// static Fixed& max(Fixed& a, Fixed& b)
-// {
-
-// }
-
-// static const Fixed& max(const Fixed& a, const Fixed& b)
-// {
-
-// }
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}

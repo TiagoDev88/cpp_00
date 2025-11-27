@@ -1,0 +1,51 @@
+=== CONSTRUCTORS ===
+a: 0
+b: 10
+c: 42.4219
+d: 10
+
+=== ASSIGNMENT / COPY ===
+e (assigned from c): 42.4219
+
+=== TO_INT / TO_FLOAT ===
+b.toInt(): 10 expected 10
+c.toInt(): 42 expected 42
+c.toFloat(): 42.4219 approx 42.4219
+
+=== COMPARISONS ===
+b > c: false
+b < c: true
+b >= d: true
+b == d: true
+c != d: true
+
+=== ARITHMETIC BASIC ===
+x = 5.05078, y = 2
+x + y = 7.05078
+x - y = 3.05078
+x * y = 10.1016
+x / y = 2.52539
+
+=== INCREMENT / DECREMENT ===
+inc = 0
+++inc = 0.00390625
+inc++ = 0.00390625
+inc after = 0.0078125
+--inc = 0.00390625
+inc-- = 0.00390625
+inc final = 0
+
+=== MIN / MAX ===
+min(x,y) = 2
+max(x,y) = 5.05078
+
+=== OVERFLOW / EDGE CASES ===
+bigA from int 134217727 => 134217727.0 (raw: 34359738304)  <-- may already overflow raw in 32-bit
+bigF from float 100000000 => 100000000.0 (raw: 25600000000)
+prod f1*f2 = ... (se dependerá de overflow/no-overflow)
+f1 / 3 = ...
+copied = ...
+f1 after self-assign = ...
+
+=== RANDOMIZED SIMPLE CHECK (float vs fixed approx) ===
+A * B (fixed) = 14932.0 expected(double) = 14934.3125 diff = 2.3125

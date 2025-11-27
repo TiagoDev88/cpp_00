@@ -1,0 +1,31 @@
+=== BASIC CONSTRUCTION ===
+a = 0
+b = 10
+c = 42.4219
+d = 10
+
+=== ASSIGNMENT ===
+a = 5.5
+
+=== COMPARISON OPERATORS ===
+b > c: 0
+b < c: 1
+b >= d: 1
+b == d: 1
+c != d: 1
+
+=== ARITHMETIC OPERATORS ===
+x + y = 7.05078
+x - y = 3.05078
+x * y = 10.1016
+x / y = 2.52539
+
+=== INCREMENT/DECREMENT ===
+inc = 0
+++inc = 0.00390625
+inc++ = 0.00390625
+inc = 0.0078125
+
+=== MIN/MAX ===
+min(x, y) = 2
+max(x, y) = 5.05078
