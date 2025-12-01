@@ -15,3 +15,13 @@ Point& Point::operator=(const Point& other)
     static_cast<void>(other);
     return *this;
 }
+
+Fixed Point::getX(void) const
+{
+    return this->_x;
+}
+
+Fixed Point::getY(void) const
+{
+    return this->_y;
+}

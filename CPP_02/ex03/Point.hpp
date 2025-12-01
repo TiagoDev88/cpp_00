@@ -16,6 +16,9 @@ class Point
     ~Point();
     Point& operator=(const Point& other);
 
+    Fixed getX(void) const;
+    Fixed getY(void) const;
+
 };
 
 #endif

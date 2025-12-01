@@ -3,6 +3,8 @@
 #include "Point.hpp"
 #include "Fixed.hpp"
 
+bool bsp( Point const a, Point const b, Point const c, Point const point);
+
 int main( void ) {
     Point a( 0.0f, 0.0f );
     Point b( 10.0f, 30.0f );
