@@ -36,20 +36,44 @@
 */
 
 // Área = | x1(y2 − y3) + x2(y3 − y1) + x3(y1 − y2) |
+Fixed area(const Point a, const Point b, const Point c)
+{
+    Fixed areaA = a.getX() * (b.getY() - c.getY());
+    Fixed areaB = b.getX() * (c.getY() - a.getY());
+    Fixed areaC = c.getX() * (a.getY() - b.getY());
+    Fixed total(areaA + areaB + areaC);
+
+    if (total < 0)
+        total = total * -1;
+    
+    return total;
+}
+
+
 
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
     //Fixed  areaABC = area de a b c;
+    Fixed areaABC = area(a, b, c);
 
+    std::cout << "area do triangulo-> " << areaABC << std::endl;
     // VERIFICAR SE A AREA DE A B C E' 0. QUER DIZER QUE E UMA LINHA.
     // RETORNO FALSO.
+    if (areaABC == 0)
+        return false;
 
     //Fixed areaABP = AREA DE A B POINT;
+    Fixed areaABP = area(a, b, point);
+    std::cout << "area do subtriangulo ABP -> " << areaABP << std::endl;
 
     //Fixed areaACP = AREA DE A C POINT;
+    Fixed areaBCP = area(b, c, point);
+    std::cout << "area do subtriangulo ACP -> " << areaBCP << std::endl;
 
     //Fixed areaBCP = AREA DE B C POINT;
-    
+    Fixed areaCAP = area(c, a, point);
+    std::cout << "area do subtriangulo BCP -> " << areaCAP << std::endl;
+
     //NA FUNCAO AREA, VERIFICAR SE O RESULTADO E MENOR QUE 0
     // PORQUE PODE DAR VALOR NEGATIVOS, CASO O ABP, ESTEJA EM
     // SENTIDO HORARIO OU ANTI-HORARIO.
@@ -64,6 +88,11 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
     // PORQUE DIVIDO O TRIANGULO PRINCIPAL EM TRIANGULOS PEQUENOS
     // E SE DER 0 QUER DIZER QUE ESTOU EM CIMA DA LINHA COM O P
     // ABP = 0   (P está em cima da linha AB)
+    if (areaABP == 0 || areaCAP == 0 || areaBCP == 0)
+        return false;
+    
+    if ((areaABP + areaCAP + areaBCP) != areaABC)
+        return false;
 
     //CASO ESTEJA NA BORDA TAMBEM, TEM QUE RETORNAR FALSE.
     // POSSO FAZER ESSE TESTE DENTRO DA FUNCAO AREA.

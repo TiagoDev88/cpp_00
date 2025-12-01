@@ -28,6 +28,7 @@ int main()
     std::cout << "Triângulo ABC:\n";
     std::cout << "A(0,0), B(10,0), C(4,8)\n\n";
 
+
     // ---- Testes dentro ----
     testPoint("Dentro 1:", A, B, C, Point(4, 3));
     testPoint("Dentro 2:", A, B, C, Point(5, 2));
