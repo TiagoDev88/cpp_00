@@ -15,7 +15,10 @@ Fixed::Fixed(const int value)
 
 Fixed::~Fixed() {}
 
-Fixed::Fixed(const Fixed& other) : _fixPoint(other._fixPoint) {}
+Fixed::Fixed(const Fixed& other) 
+{
+    *this = other;
+}
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
