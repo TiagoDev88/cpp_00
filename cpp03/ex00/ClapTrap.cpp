@@ -2,14 +2,14 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10),
- _attackDamage(0), _name("Default")
+ClapTrap::ClapTrap() : _name(""), _hitPoints(10),
+_energyPoints(10), _attackDamage(0)
 {
     std::cout << "Constructor default called\n";
 }
 
-ClapTrap::ClapTrap(std::string name) :  _hitPoints(10), _energyPoints(10),
- _attackDamage(0), _name(name)
+ClapTrap::ClapTrap(std::string name) :  _name(name),
+_hitPoints(10), _energyPoints(10), _attackDamage(0) 
 {
     std::cout << "Constructor with params called\n";
 }
@@ -98,7 +98,8 @@ void ClapTrap::takeDamage(unsigned int amount)
     this->_hitPoints -= amount;
 
 }
-
+//TODO: verificar se o amount e' negativo
+// talvez printar a vida que tenho.
 void ClapTrap::beRepaired(unsigned int amount)
 {
     //When ClapTrap repairs itself, it regains <amount> hit points.
