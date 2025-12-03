@@ -41,20 +41,79 @@ ClapTrap::~ClapTrap()
 void ClapTrap::attack(const std::string& target)
 {
     //Attacking and repairing each cost 1 energy point.
+    if (this->_hitPoints == 0)
+    {
+        std::cout << "Claptrap " << this->_name <<
+                 " is dead! " << 
+                 "Since it's dead, it doesn't attack, or is it a zombie?"
+                 << std::endl;
+        return;
+    }
+    if (this->_energyPoints == 0)
+    {
+        std::cout << "Claptrap " << this->_name <<
+                 " dont have energyPoints!" << std::endl;
+        return;
+    }
+    if(this->_attackDamage == 0)
+    {
+        std::cout << "Claptrap " << this->_name << " attacks "
+                  << target << ", causing " << this->_attackDamage
+                  << " points of damage! Then nothing happens"
+                  << " And you have now " << this->_energyPoints 
+                  << " energy points! " << std::endl;
+        this->_energyPoints--;
+        return;
+    }
+    this->_energyPoints--;
     std::cout << "Claptrap " << this->_name << " attacks "
               << target << ", causing " << this->_attackDamage
-              << " points of damage!" << std::endl;
+              << " points of damage!" << " And you have now "
+              << this->_energyPoints << " energy points! "
+              << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
     //When ClapTrap attacks, it causes its
     // target to lose <attack damage> hit points.
+    if (this->_hitPoints == 0)
+    {
+        std::cout << "Claptrap " << this->_name
+                  << "is dead! Don't hit dead people!" << std::endl;
+        return;
+    }
+    if (this->_hitPoints < amount)
+    {
+        std::cout << "Claptrap " << this->_name
+                  << " died with " << amount 
+                  << " points of damage!" << std::endl;
+        this->_hitPoints = 0;
+        return;
+    }
+
+    std::cout << "Claptrap " << this->_name
+          << " received attack with " << amount 
+          << " points of damage!" << std::endl;
+    this->_hitPoints -= amount;
 
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
     //When ClapTrap repairs itself, it regains <amount> hit points.
-
+    if (this->_energyPoints == 0)
+    {
+        std::cout << "Claptrap " << this->_name
+                  << "! You don't have enough points to heal yourself."
+                  << std::endl;
+        return;
+    }
+    this->_energyPoints--;
+    this->_hitPoints +=amount;
+    std::cout << "Claptrap " << this->_name
+              << " You gain " << amount 
+              << "of health!" << " And you have " 
+              << "now " << this->_energyPoints 
+              << " energy points! " << std::endl;
 }
