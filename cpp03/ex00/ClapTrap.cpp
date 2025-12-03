@@ -110,6 +110,7 @@ void ClapTrap::beRepaired(unsigned int amount)
                   << "! You can't heal with 0 amount!"
                   << " But cost 1 energy point!"
                   << std::endl;
+        this->_energyPoints--;
         return;
     }
     if (this->_energyPoints == 0)
