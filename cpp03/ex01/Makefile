@@ -1,9 +1,9 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = ex00
+NAME = ex01
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

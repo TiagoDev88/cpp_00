@@ -1,10 +1,9 @@
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-#include <iostream>
-#include "limits.h"
+#include "ClapTrap.hpp"
 
-class ClapTrap
+class ScavTrap : ClapTrap
 {
     private:
     std::string _name;
@@ -13,15 +12,20 @@ class ClapTrap
     unsigned int _attackDamage;
 
     public:
-    ClapTrap();
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap& other);
-    ClapTrap& operator=(const ClapTrap& other);
-    ~ClapTrap();
+    ScavTrap();
+    ScavTrap(const ScavTrap& other);
+    ~ScavTrap();
+    ScavTrap& operator=(const ScavTrap& other);
 
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
+
+    void guardGate();
+
 };
+
+
+
 
 #endif

@@ -1,6 +1,7 @@
 
 
 #include "ClapTrap.hpp"
+#include "limits.h"
 
 ClapTrap::ClapTrap() : _name("default"), _hitPoints(10),
 _energyPoints(10), _attackDamage(0)
@@ -42,6 +43,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
+    //Attacking and repairing each cost 1 energy point.
     if (this->_hitPoints == 0)
     {
         std::cout << "Claptrap " << this->_name <<
@@ -67,6 +69,8 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+    //When ClapTrap attacks, it causes its
+    // target to lose <attack damage> hit points.
     if (this->_hitPoints == 0)
     {
         std::cout << "Claptrap " << this->_name
@@ -96,7 +100,8 @@ void ClapTrap::takeDamage(unsigned int amount)
           << this->_hitPoints << " HP!"
           << std::endl;
 }
-
+//TODO: verificar se o amount e' negativo
+// talvez printar a vida que tenho.
 void ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->_energyPoints == 0)
