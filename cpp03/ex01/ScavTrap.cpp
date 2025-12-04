@@ -1,9 +1,9 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
-    std::cout << "Constructor default ScavTrap called\n";
+    std::cout << "Constructor default ScavTrap called\n";_
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other)
