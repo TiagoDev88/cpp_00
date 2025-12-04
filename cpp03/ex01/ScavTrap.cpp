@@ -3,7 +3,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-    std::cout << "Constructor default ScavTrap called\n";_
+    std::cout << "Constructor default ScavTrap called\n";
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other)
