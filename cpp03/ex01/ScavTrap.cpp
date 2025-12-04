@@ -17,10 +17,11 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other)
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
-    *this = other;
-    std::cout << "Copy Constructor ScavTrap called\n";
+    // *this = other;
+    std::cout << "Copy Constructor ScavTrap called from "
+              << getName() << std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -56,9 +57,27 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 // "ScavTrap <name> has no energy or hit points left to attack!"
 void ScavTrap::attack(const std::string& target)
 {
+    if (this->getHitPoints() == 0)
+    {
+        std::cout << "ScavTrap " << this->getName() <<
+                 " is dead! " << 
+                 "Since it's dead, it doesn't attack, or is it a zombie?"
+                 << std::endl;
+        return;
+    }
+    if (this->getEnergyPoints() == 0)
+    {
+        std::cout << "ScavTrap " << this->getName() <<
+                 " dont have energy points!" << std::endl;
+        return;
+    }
+
+    this->setEnergyPoints(this->getEnergyPoints() - 1);
     std::cout << "ScavTrap " << this->getName() << " attacks "
               << target << ", causing "
               << this->getAttackDamage() << " points of damage!"
+              << " And now has "
+              << this->getEnergyPoints() << " energy points! "
               << std::endl;
 }
 

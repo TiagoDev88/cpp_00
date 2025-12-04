@@ -7,12 +7,17 @@ void testScavTrap()
 {
     ScavTrap scav1("ScavengerOne");
     ScavTrap scav2("ScavengerTwo");
-    ScavTrap scav3;
-    scav3 = scav1;
+    ScavTrap clone("clone");
     scav1.attack("an intruder");
+    scav1.takeDamage(100);
+    clone = scav1;
+    clone.takeDamage(1); //is dead. because copy from scav1.
+    scav1.beRepaired(20);
+    clone.takeDamage(1); //is dead. because copy from scav1.
     scav1.guardGate();
     scav2.takeDamage(30);
     scav2.beRepaired(20);
+    scav2.attack("zombie");
 }
 
 void testClapTrap()
@@ -42,7 +47,7 @@ void testClapTrap()
 int main(void)
 {
     testClapTrap();
-    std::cout << "---------------------" << std::endl;
+    std::cout << "---------------------------------------------------------------" << std::endl;
     testScavTrap();
     
     return 0;
