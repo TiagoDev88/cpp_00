@@ -1,9 +1,21 @@
 
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main(void)
+void testScavTrap()
 {
+    ScavTrap scav1("ScavengerOne");
+    ScavTrap scav2("ScavengerTwo");
+    scav1.attack("an intruder");
+    scav1.guardGate();
+    scav2.takeDamage(30);
+    scav2.beRepaired(20);
+}
+
+void testClapTrap()
+{
+
     ClapTrap trapTiago("Tiago");
     ClapTrap trapKiko("Kiko");
     ClapTrap noName;
@@ -20,8 +32,16 @@ int main(void)
     ClapTrap cloneTiago(trapTiago);
     cloneTiago.attack("Alberto"); // dont attack because dont have EnergyPoints.
     ClapTrap test;
-    test.beRepaired(UINT_MAX);
-    test.beRepaired(UINT_MAX);
-    test.beRepaired(UINT_MAX); 
+    test.beRepaired(4294967295);
+    test.beRepaired(4294967295);
+    test.beRepaired(4294967295); 
+}
+
+int main(void)
+{
+    testClapTrap();
+    std::cout << "---------------------" << std::endl;
+    testScavTrap();
+    
     return 0;
 }

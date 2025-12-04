@@ -5,25 +5,26 @@
 ClapTrap::ClapTrap() : _name("default"), _hitPoints(10),
 _energyPoints(10), _attackDamage(0)
 {
-    std::cout << "Constructor default called\n";
+    std::cout << "Constructor ClapTrap default called\n";
 }
 
 ClapTrap::ClapTrap(std::string name) :  _name(name),
 _hitPoints(10), _energyPoints(10), _attackDamage(0) 
 {
-    std::cout << "Constructor called for " << this->_name << std::endl;
+    std::cout << "Constructor ClapTrap called for " 
+              << this->_name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
-    std::cout << "Copy Constructor called from "
+    std::cout << "Copy Constructor ClapTrap called from "
               << other._name << std::endl;
     *this = other;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-    std::cout << "Copy operator called\n";
+    std::cout << "Copy operator ClapTrap called\n";
     if (this != &other)
     {
         this->_attackDamage = other._attackDamage;
@@ -36,7 +37,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor called for "
+    std::cout << "Destructor ClapTrap called for "
               << this->_name << std::endl;
 }
 

@@ -3,7 +3,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-    std::cout << "Constructor default ScavTrap called\n";
+    std::cout << "Constructor ScavTrap default called\n";
     this->setHitPoints(100);
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
@@ -16,7 +16,8 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
 }
-ScavTrap::ScavTrap(const ScavTrap& other)
+
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
     std::cout << "Copy Constructor ScavTrap called\n";
     *this = other;
@@ -24,7 +25,8 @@ ScavTrap::ScavTrap(const ScavTrap& other)
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "Destructor ScavTrap called\n";
+    std::cout << "Destructor ScavTrap called for "
+              << this->getName() << std::endl;
 
 }
 
@@ -40,7 +42,18 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
     }
     return *this;
 }
-
+//TODO: implementar o attack do ScavTrap
+// sobrescrevendo o metodo da classe ClapTrap
+// para exibir uma mensagem diferente
+// ao atacar
+// a mensagem deve ser no formato:
+// "ScavTrap <name> attacks <target>, causing <attack damage>
+// points of damage!"
+// mas tenho que usar os metodos getName() e getAttackDamage()
+// para obter o nome e o attack damage
+// e tambem verifificar se o ScavTrap tem energia e hit points
+// suficientes para atacar, se nao tiver, exibir a mensagem
+// "ScavTrap <name> has no energy or hit points left to attack!"
 void ScavTrap::attack(const std::string& target)
 {
     std::cout << "ScavTrap " << this->getName() << " attacks "
@@ -52,5 +65,7 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate()
 {
-    std::cout << "ScavTrap is now in Gate keeper mode\n";
+    std::cout << "ScavTrap " << this->getName()
+              << " is now in Gate keeper mode."
+              << std::endl;
 }
