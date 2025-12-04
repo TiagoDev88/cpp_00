@@ -20,8 +20,10 @@ int main(void)
     ClapTrap cloneTiago(trapTiago);
     cloneTiago.attack("Alberto"); // dont attack because dont have EnergyPoints.
     ClapTrap test;
-    test.beRepaired(UINT_MAX);
-    test.beRepaired(UINT_MAX);
-    test.beRepaired(UINT_MAX); 
+    test.beRepaired(4294967295);
+    test.beRepaired(4294967295);
+    test.beRepaired(4294967295); 
+    test.takeDamage(4294967295);
+    test.takeDamage(1);
     return 0;
 }
