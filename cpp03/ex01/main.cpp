@@ -7,6 +7,8 @@ void testScavTrap()
 {
     ScavTrap scav1("ScavengerOne");
     ScavTrap scav2("ScavengerTwo");
+    ScavTrap scav3;
+    scav3 = scav1;
     scav1.attack("an intruder");
     scav1.guardGate();
     scav2.takeDamage(30);

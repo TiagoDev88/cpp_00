@@ -17,10 +17,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     this->setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
+ScavTrap::ScavTrap(const ScavTrap& other)
 {
-    std::cout << "Copy Constructor ScavTrap called\n";
     *this = other;
+    std::cout << "Copy Constructor ScavTrap called\n";
 }
 
 ScavTrap::~ScavTrap()
