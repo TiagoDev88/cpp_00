@@ -116,7 +116,15 @@ void ClapTrap::beRepaired(unsigned int amount)
         return;
     }
     if (static_cast<long long>(this->_hitPoints) + amount > UINT_MAX)
+    {
         this->_hitPoints = UINT_MAX;
+        std::cout << "Claptrap " << this->_name
+                  << " obtained max value of hit points!"
+                  << " Has " << this->_hitPoints << " HP and "
+                  << this->_energyPoints << " energy points!"
+                  << std::endl;
+        return;
+    }
     else
         this->_hitPoints +=amount;
     std::cout << "Claptrap " << this->_name
