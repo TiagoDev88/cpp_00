@@ -134,3 +134,43 @@ void ClapTrap::beRepaired(unsigned int amount)
               << this->_energyPoints << " energy points!" 
               << std::endl;
 }
+
+unsigned int ClapTrap::getHitPoints() const
+{
+    return this->_hitPoints;
+}
+
+unsigned int ClapTrap::getEnergyPoints() const
+{
+    return this->_energyPoints;
+}
+
+unsigned int ClapTrap::getAttackDamage() const
+{
+    return this->_attackDamage;
+}
+
+std::string ClapTrap::getName() const
+{
+    return this->_name;
+}
+
+void ClapTrap::setHitPoints(unsigned int hitPoints)
+{
+    this->_hitPoints = hitPoints;
+}
+
+void ClapTrap::setEnergyPoints(unsigned int energyPoints)
+{
+    this->_energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDamage(unsigned int attackDamage)
+{
+    this->_attackDamage = attackDamage;
+}
+
+void ClapTrap::setName(std::string name)
+{
+    this->_name = name;
+}
