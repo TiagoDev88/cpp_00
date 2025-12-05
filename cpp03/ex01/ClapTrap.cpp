@@ -2,7 +2,7 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("default"), _hitPoints(10),
+ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10),
 _energyPoints(10), _attackDamage(0)
 {
     std::cout << "Constructor ClapTrap default called\n";
@@ -45,7 +45,7 @@ void ClapTrap::attack(const std::string& target)
 {
     if (this->_hitPoints == 0)
     {
-        std::cout << "Claptrap " << this->_name <<
+        std::cout << "ClapTrap " << this->_name <<
                  " is dead! " << 
                  "Since it's dead, it doesn't attack, or is it a zombie?"
                  << std::endl;
@@ -70,13 +70,13 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
     if (this->_hitPoints == 0)
     {
-        std::cout << "Claptrap " << this->_name
+        std::cout << "ClapTrap " << this->_name
                   << " is dead! Please dont hit me!" << std::endl;
         return;
     }
     if (this->_hitPoints <= amount)
     {
-        std::cout << "Claptrap " << this->_name
+        std::cout << "ClapTrap " << this->_name
                   << " died with " << amount 
                   << " points of damage!" << std::endl;
         this->_hitPoints = 0;
@@ -84,14 +84,14 @@ void ClapTrap::takeDamage(unsigned int amount)
     }
     if (amount == 0)
     {
-        std::cout << "Claptrap " << this->_name
+        std::cout << "ClapTrap " << this->_name
                   << " received attack with " << amount 
                   << " points of damage and nothing happens!"
                   << std::endl;
         return;
     }
     this->_hitPoints -= amount;
-    std::cout << "Claptrap " << this->_name
+    std::cout << "ClapTrap " << this->_name
           << " received attack with " << amount 
           << " points of damage!" << " And now has "
           << this->_hitPoints << " HP!"
@@ -102,7 +102,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->_energyPoints == 0)
     {
-        std::cout << "Claptrap " << this->_name
+        std::cout << "ClapTrap " << this->_name
                   << " don't have enough points to heal yourself."
                   << std::endl;
         return;
@@ -110,7 +110,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     this->_energyPoints--;
     if (amount == 0)
     {
-        std::cout << "Claptrap " << this->_name
+        std::cout << "ClapTrap " << this->_name
                   << " can't heal with 0 amount!"
                   << " But cost 1 energy point!"
                   << std::endl;
@@ -119,7 +119,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     if (static_cast<long long>(this->_hitPoints) + amount > 4294967295)
     {
         this->_hitPoints = 4294967295; //uint max value
-        std::cout << "Claptrap " << this->_name
+        std::cout << "ClapTrap " << this->_name
                   << " obtained max value of hit points!"
                   << " Has " << this->_hitPoints << " HP and "
                   << this->_energyPoints << " energy points!"
@@ -128,7 +128,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     }
     else
         this->_hitPoints +=amount;
-    std::cout << "Claptrap " << this->_name
+    std::cout << "ClapTrap " << this->_name
               << " gain " << amount 
               << " HP!" << " Has "
               << this->_hitPoints << " HP and " 
