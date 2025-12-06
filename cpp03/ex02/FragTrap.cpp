@@ -4,18 +4,18 @@
 
 FragTrap::FragTrap() : ClapTrap()
 {
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
     std::cout << "Constructor FragTrap default called"
               << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-    this->setHitPoints(100);
-    this->setEnergyPoints(100);
-    this->setAttackDamage(30);
+    this->_hitPoints = 100;
+    this->_energyPoints = 100;
+    this->_attackDamage = 30;
     std::cout << "Constructor FragTrap called for "
               << name << std::endl;
 }
@@ -24,7 +24,7 @@ FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other)
 {
     *this = other;
     std::cout << "Copy Constructor FragTrap called from "
-              << other.getName() << std::endl;
+              << other._name << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other)
@@ -32,10 +32,10 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
     std::cout << "Copy operator FragTrap called\n";
     if (this != &other)
     {
-        this->setAttackDamage(other.getAttackDamage());
-        this->setEnergyPoints(other.getEnergyPoints());
-        this->setHitPoints(other.getHitPoints());
-        this->setName(other.getName());
+        this->_attackDamage = other._attackDamage;
+        this->_energyPoints = other._energyPoints;
+        this->_hitPoints = other._hitPoints;
+        this->_name = other._name;
     }
     return *this;
 }
@@ -43,11 +43,11 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 FragTrap::~FragTrap()
 {
     std::cout << "Destructor FragTrap called for "
-              << this->getName() << std::endl;
+              << this->_name << std::endl;
 }
 
 void FragTrap::highFivesGuys()
 {
-    std::cout << this->getName() << "high five!"
+    std::cout << this->_name << "high five!"
               << std::endl;
 }
