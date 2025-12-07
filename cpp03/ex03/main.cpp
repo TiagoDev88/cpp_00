@@ -10,7 +10,6 @@ void testDiamondProblem()
     std::cout << "--- Test 1: Single ClapTrap Instance Check ---\n";
     std::cout << "Creating DiamondTrap 'Alpha'...\n";
     std::cout << "Expected: Only ONE ClapTrap constructor call\n";
-    std::cout << "If you see TWO, virtual inheritance is missing!\n\n";
     
     DiamondTrap dt1("Alpha");
     
@@ -55,7 +54,6 @@ void testDiamondProblem()
     std::cout << "\n";
 
     std::cout << "--- Test 8: Destruction Order ---\n";
-    std::cout << "Watch destructor calls when exiting scope...\n";
     std::cout << "Expected order: ~DiamondTrap -> ~ScavTrap -> ~FragTrap -> ~ClapTrap\n";
     std::cout << "Each object should destroy only ONE ClapTrap instance\n";
 }
@@ -94,32 +92,11 @@ void testEdgeCases()
     std::cout << "\n";
 }
 
-void testMemoryAddresses()
-{
-    std::cout << "\n========================================\n";
-    std::cout << "MEMORY LAYOUT TEST (Diamond Problem)\n";
-    std::cout << "========================================\n\n";
-
-    DiamondTrap dt("MemTest");
-    
-    std::cout << "DiamondTrap address:     " << &dt << "\n";
-    std::cout << "ClapTrap subobject:      " << static_cast<ClapTrap*>(&dt) << "\n";
-    std::cout << "FragTrap subobject:      " << static_cast<FragTrap*>(&dt) << "\n";
-    std::cout << "ScavTrap subobject:      " << static_cast<ScavTrap*>(&dt) << "\n";
-    
-    std::cout << "\nWith virtual inheritance:\n";
-    std::cout << "  - ClapTrap address should be SAME from both paths\n";
-    std::cout << "  - FragTrap and ScavTrap may have different addresses\n";
-    std::cout << "\nWithout virtual inheritance:\n";
-    std::cout << "  - You would see ambiguity errors at compile time\n";
-    std::cout << "  - Or runtime issues with duplicate ClapTrap data\n";
-}
 
 int main()
 {
     testDiamondProblem();
     testEdgeCases();
-    testMemoryAddresses();
 
     std::cout << "\n========================================\n";
     std::cout << "ALL TESTS COMPLETED\n";
