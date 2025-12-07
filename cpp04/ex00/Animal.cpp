@@ -31,11 +31,16 @@ Animal& Animal::operator=(const Animal& other)
 
 Animal::~Animal()
 {
-    std::cout << "Destructor Animal called from"
+    std::cout << "Destructor Animal called from "
               << this->_type << std::endl;
 }
 
 void Animal::makeSound() const
 {
     std::cout << "Animal sound!" << std::endl;
+}
+
+std::string Animal::getType() const
+{
+    return this->_type;
 }
