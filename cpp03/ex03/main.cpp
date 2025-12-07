@@ -10,11 +10,6 @@ int main()
     std::cout << "\n--- WHO AM I ---" << std::endl;
     dt1.whoAmI();
 
-    std::cout << "\n--- STATS INICIAIS ---" << std::endl;
-    std::cout << "Hitpoints:  " << dt1.getHitPoints() << std::endl;
-    std::cout << "Energy:     " << dt1.getEnergyPoints() << std::endl;
-    std::cout << "Attack dmg: " << dt1.getAttackDamage() << std::endl;
-
     std::cout << "\n--- ATAQUE ---" << std::endl;
     dt1.attack("Inimigo");
 
@@ -31,3 +26,35 @@ int main()
 
     return 0;
 }
+
+// #include "DiamondTrap.hpp"
+// #include <iostream>
+
+// int main() {
+//     DiamondTrap dt("Bob");
+
+//     dt.whoAmI();
+//     dt.attack("Enemy");
+//     dt.takeDamage(20);
+//     dt.beRepaired(10);
+
+//     std::cout << "\nCopying...\n";
+//     DiamondTrap copy(dt);
+//     copy.whoAmI();
+
+//     return 0;
+// }
+
+/*OUTPUT
+
+DiamondTrap constructor called for Bob
+DiamondTrap name: Bob
+ClapTrap name: Bob_clap_name
+ScavTrap Bob_clap_name attacks Enemy, causing XX damage!
+ClapTrap Bob_clap_name received attack...
+ClapTrap Bob_clap_name gain HP...
+DiamondTrap copy constructor called
+DiamondTrap name: Bob
+ClapTrap name: Bob_clap_name
+
+*/
