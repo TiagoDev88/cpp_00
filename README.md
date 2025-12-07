@@ -6,7 +6,9 @@ This repository contains my solutions for the C++ modules at 42 school. Each mod
 
 - **CPP 00**: Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and other basic concepts
 - **CPP 01**: Memory allocation, pointers to members, references, switch statement
-
+- **CPP 02**: Constructors, destructors, copy constructors, operator overloading
+- **CPP 03**: Inheritance
+- **CPP 04**: Polymorphism, abstract classes, interfaces
 
 ## How to Use
 
