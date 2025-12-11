@@ -17,7 +17,7 @@ Animal::Animal(const Animal& other)
 {
     std::cout << "Copy Constructor Animal called from "
               << other._type << std::endl;
-    *this = other;
+    this->_type = other._type;
 }
 
 Animal& Animal::operator=(const Animal& other)

@@ -2,17 +2,16 @@
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : Animal("Cat")
 {
     std::cout << "Constructor Cat default called\n";
-    this->_type = "Cat";
 }
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
     std::cout << "Copy Constructor Cat called from "
               << other._type << std::endl;
-    *this = other;
+    this->_type = other._type;
 }
 
 Cat& Cat::operator=(const Cat& other)
