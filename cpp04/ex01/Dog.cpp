@@ -2,15 +2,17 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog"), _brain(new Brain())
+Dog::Dog() : Animal("Dog")
 {
     std::cout << "Constructor Dog default called\n";
+    this->_brain = new Brain();
 }
 
-Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain))
+Dog::Dog(const Dog& other) : Animal(other)
 {
     std::cout << "Copy Constructor Dog called from "
               << other._type << std::endl;
+    this->_brain = new Brain(*other._brain);
 }
 
 Dog& Dog::operator=(const Dog& other)
@@ -28,12 +30,17 @@ Dog& Dog::operator=(const Dog& other)
 
 Dog::~Dog()
 {
+    delete this->_brain;
     std::cout << "Destructor Dog called from "
               << this->_type << std::endl;
-    delete this->_brain;
 }
 
 void Dog::makeSound(void) const
 {
     std::cout << "Auf Auf!" << std::endl;
+}
+
+Brain* Dog::getBrain(void) const
+{
+    return this->_brain;
 }

@@ -29,3 +29,26 @@ Brain::~Brain()
 {
     std::cout << "Destructor Brain called" << std::endl;
 }
+
+std::string Brain::getIdea(size_t index) const
+{
+    if (index >= 100)
+    {
+        std::cerr << "Index out of range, please choose from 0 to 99"
+                  << std::endl;
+        return ("");
+    }
+    return (this->_ideas[index]);
+}
+
+void Brain::setIdea(size_t index, std::string idea)
+{
+    if (index >= 100)
+    {
+        std::cout << index << std::endl;
+        std::cerr << "Index out of range, please choose from 0 to 99"
+                  << std::endl;
+        return;
+    }
+    this->_ideas[index] = idea;
+}
