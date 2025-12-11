@@ -13,11 +13,10 @@ Animal::Animal(std::string type) : _type(type)
               << this->_type << std::endl;
 }
 
-Animal::Animal(const Animal& other)
+Animal::Animal(const Animal& other) : _type(other._type)
 {
     std::cout << "Copy Constructor Animal called from "
               << other._type << std::endl;
-    *this = other;
 }
 
 Animal& Animal::operator=(const Animal& other)
