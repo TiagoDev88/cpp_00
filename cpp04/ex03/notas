@@ -26,9 +26,11 @@ class AMateria
 
 Implement the concrete classes for Materias: Ice and Cure.
 Use their names in lowercase ("ice" for Ice, "cure" for Cure)
-to set their types. Of course, their member function clone()
-will return a new instance of the same
-type (i.e., if you clone an Ice Materia, you will get a new Ice Materia).
+to set their types.
+
+Of course, their member function clone()
+will return a new instance of the same type
+(i.e., if you clone an Ice Materia, you will get a new Ice Materia).
 
 The use(ICharacter&) member function will display:
     • Ice: "* shoots an ice bolt at <name> *"
@@ -53,11 +55,14 @@ class ICharacter
 
 The Character possesses an inventory of 4 slots, which means at most 4 Materias.
 The inventory is empty upon construction.
+
 They equip the Materias in the first empty slot they find,
 in the following order: from slot 0 to slot 3.
+
 If they try to add a Materia to a full inventory,
 or use/unequip a non-existent Materia, nothing should happen
 (but bugs are still forbidden).
+
 The unequip() member function must NOT delete the Materia!
 
 
@@ -110,25 +115,6 @@ class IMateriaSource
 
 Running this code:
 
-int main()
-{
-    IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    ICharacter* me = new Character("me");
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    ICharacter* bob = new Character("bob");
-    me->use(0, *bob);
-    me->use(1, *bob);
-    delete bob;
-    delete me;
-    delete src;
-    return 0;
-}
 
 Should output:
 $> clang++ -W -Wall -Werror *.cpp
