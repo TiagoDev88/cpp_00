@@ -6,6 +6,7 @@ NAME        = ex03
 BUILD_PATH  = .build
 SRC_PATH    = src
 INC_PATH    = inc
+INCLUDES    = -I$(INC_PATH)
 
 SRCS        = $(addprefix $(SRC_PATH)/, main.cpp \
 										AMateria.cpp \
@@ -18,7 +19,6 @@ OBJS        = $(SRCS:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
 
 RM          = rm -fr
 MKDIR       = mkdir -p
-INCLUDES    = -I$(INC_PATH)
 
 V_ARGS      = --leak-check=full --show-leak-kinds=all --track-origins=yes
 
