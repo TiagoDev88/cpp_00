@@ -7,10 +7,12 @@ class MateriaSource : public IMateriaSource
 {
     private:
 //talvez colocar um tamanho maximo aqui
+
 //e um array de ponteiros para AMateria
 //para guardar as materias aprendidas
+    AMateria*           _materia[4];
 
-    
+
     public:
     MateriaSource();
     MateriaSource(const MateriaSource& other);

@@ -103,14 +103,14 @@ class IMateriaSource
     know at most 4 Materias. They are not necessarily unique.
 
 • createMateria(std::string const &)
-    Returns a new Materia. The latter is a copy of the
-    Materia previously learned by the MateriaSource whose
-    type equals the one passed as parameter.
-    Returns 0 if the type is unknown.
-    In a nutshell, your MateriaSource must be able to learn
-    "templates" of Materias to create them when needed.
-    Then, you will be able to generate a new Materia
-    using just a string that identifies its type.
+    Retorna uma nova Matéria. Este último é uma cópia do
+    Matéria aprendida anteriormente pela MateriaSource cujo
+    tipo é igual ao passado como parâmetro.
+    Retorna 0 se o tipo for desconhecido.
+    Resumindo, seu MateriaSource deve ser capaz de aprender
+    "modelos" de Matérias para criá-los quando necessário.
+    Então, você poderá gerar uma nova Matéria
+    usando apenas uma string que identifica seu tipo.
 
 
 Running this code:
