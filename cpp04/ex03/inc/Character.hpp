@@ -7,10 +7,14 @@ class Character : public ICharacter
 {
     private:
 // talvez um array de ponteiros para AMateria
+    AMateria*       _materia[4];
 // e um nome
+    std::string     _name;
 // um tamanho maximo de inventario
+    static const int _max_inv;
 // e um contador de materias equipadas
 // para gerenciar o inventario
+    int              _count_equip;
 
     public:
     Character();
@@ -23,6 +27,8 @@ class Character : public ICharacter
     virtual void equip(AMateria* m);
     virtual void unequip(int idx);
     virtual void use(int idx, ICharacter& target);
+
+    AMateria* getAMateria() const; 
 };
 
 #endif
