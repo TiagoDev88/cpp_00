@@ -1,16 +1,19 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "ICharacter.hpp"
+#include "../inc/ICharacter.hpp"
 
 class Character : public ICharacter
 {
     private:
-    std::string     _name;
-    static const int    _inventorySize = 4;
-    AMateria*       _inventory[_inventorySize];
+// talvez um array de ponteiros para AMateria
+// e um nome
+// um tamanho maximo de inventario
+// e um contador de materias equipadas
+// para gerenciar o inventario
 
     public:
+    Character();
     Character(const std::string name);
     Character(const Character& other);
     Character& operator=(const Character& other);

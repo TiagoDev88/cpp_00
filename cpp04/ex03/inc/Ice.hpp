@@ -1,7 +1,7 @@
 #ifndef ICE_HPP
 #define ICE_HPP
 
-#include "AMateria.hpp"
+#include "../inc/AMateria.hpp"
 
 class Ice : public AMateria
 {

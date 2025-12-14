@@ -2,7 +2,7 @@
 #define IMATERIASOURCE_HPP
 
 #include <iostream>
-#include "AMateria.hpp"
+#include "../inc/AMateria.hpp"
 
 class IMateriaSource
 {

@@ -1,15 +1,15 @@
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
-#include "IMateriaSource.hpp"
-#include "AMateria.hpp"
+#include "../inc/IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource
 {
     private:
-    static const int    _maxMateria = 4;
-    AMateria*           _materias[_maxMateria];
-    int                 _learnedCount;
+//talvez colocar um tamanho maximo aqui
+//e um array de ponteiros para AMateria
+//para guardar as materias aprendidas
+
     
     public:
     MateriaSource();
