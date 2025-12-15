@@ -73,7 +73,6 @@ void Character::equip(AMateria* m)
             return;
         }
     }
-    delete m;
 }
 
 void Character::unequip(int idx)
@@ -81,13 +80,15 @@ void Character::unequip(int idx)
     if (idx < 0 || idx > 3)
     {
         std::cout << "Slot out of range! " << std::endl;
+        return;
     }
 
     if (_slot[idx])
     {
-        _slot[idx] = NULL;
         std::cout << _slot[idx]->getType() << " unequip from slot "
                   << idx << std::endl;
+        delete _slot[idx];
+        _slot[idx] = NULL;
     }
 }
 

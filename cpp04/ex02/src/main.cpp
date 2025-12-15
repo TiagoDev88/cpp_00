@@ -7,7 +7,7 @@
 
 int main()
 {
-    // Animal* AAnimal = new Animal(); // its now allow to instantiate, because is pure virtual.
+    // Animal* AAnimal = new Animal(); // its not allow to instantiate, because is pure virtual. for EVAL
     const Animal* j = new Dog();
     const Animal* i = new Cat();
 

@@ -1,6 +1,5 @@
 
 
-
 #include "../inc/IMateriaSource.hpp"
 #include "../inc/ICharacter.hpp"
 #include "../inc/AMateria.hpp"
@@ -12,34 +11,115 @@
 
 int main()
 {
-    IMateriaSource* src = new MateriaSource();
+    std::cout << "\nTest 1 ----------------------\n";
+    {
+        IMateriaSource* src = new MateriaSource();
+        src->learnMateria(new Ice());
+        src->learnMateria(new Cure());
+        ICharacter* me = new Character("me");
+        AMateria* tmp;
+        tmp = src->createMateria("ice");
+        me->equip(tmp);
+        tmp = src->createMateria("cure");
+        me->equip(tmp);
+        ICharacter* bob = new Character("bob");
+        me->use(0, *bob);
+        me->use(1, *bob);
+    
+        delete bob;
+        delete me;
+        delete src;
+    }
 
-    src->learnMateria(new Ice());
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Cure());
-    src->learnMateria(new Cure());
+    std::cout << "\nTest 2 ----------------------\n";
+    {
+        IMateriaSource* src = new MateriaSource();
+        src->learnMateria(new Ice());
+        src->learnMateria(new Ice());
+        ICharacter* me = new Character("me");
+        AMateria* tmp;
+        tmp = src->createMateria("ICE"); // wrong name
+        me->equip(tmp);
+        ICharacter* kiko = new Character("kiko");
+        me->use(0, *kiko);
+        tmp = src->createMateria("ice");
+        me->use(0, *kiko); // dont use because not equip
+        me->equip(tmp);
+        me->use(0, *kiko);
 
-    ICharacter* me = new Character("me");
+        delete src;
+        delete kiko;
+        delete me;
+    }
 
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
+    std::cout << "\nTest 3 ----------------------\n";
+    {
+        IMateriaSource* src = new MateriaSource();
+        src->learnMateria(new Ice());
+        src->learnMateria(new Cure());        
+        src->learnMateria(new Ice());
+        src->learnMateria(new Cure());
+        src->learnMateria(new Ice());
+        src->learnMateria(new Cure());
+        ICharacter* me = new Character("me");
+        AMateria* tmp;
+        tmp = src->createMateria("ice");
+        me->equip(tmp);
+        me->equip(tmp);
+        me->equip(tmp);
+        me->equip(tmp);
+        me->equip(tmp);
+        ICharacter* kiko = new Character("kiko");
+        me->use(0, *kiko);
+        tmp = src->createMateria("ice");
+        me->unequip(0);
+        me->unequip(-1); // invalid index
+        me->unequip(42); // invalid index
+        me->use(0, *kiko); // dont use because not equip
+        me->equip(tmp);
+        me->use(0, *kiko);
 
-    me->equip(tmp);
+        delete src;
+        delete kiko;
+        delete me;
+    }
+        std::cout << "\nTest 4 ---------------------- CLONES\n";
+    {
+        IMateriaSource* src = new MateriaSource();
 
-    ICharacter* bob = new Character("bob");
-    bob->equip(tmp);
+        src->learnMateria(new Ice());
+        src->learnMateria(new Cure());        
 
-    me->use(0, *bob);
-    me->use(1, *bob);
-    me->use(3, *me);  // empty slot
+        ICharacter* me = new Character("me");
+        ICharacter* kiko = new Character("kiko");
+        
+        AMateria* tmp;
+        tmp = src->createMateria("ice");
+        me->equip(tmp);
+        me->equip(tmp);
+        tmp = src->createMateria("cure");
+        me->equip(tmp);
+        me->equip(tmp);
+        me->equip(tmp);
+        me->use(0, *kiko);
+        me->use(1, *kiko);
+        me->use(2, *kiko);
+        me->use(3, *kiko);
 
-    delete bob;
+        AMateria* cloneTmp(tmp);
 
-    delete me;
-    delete src;
+        cloneTmp = src->createMateria("ice");
+        me->unequip(3);
+        me->equip(cloneTmp); // equip with clone ' materia ice'
+        me->use(3, *me);
+        me->unequip(3);
+        me->equip(tmp); // equip with orifinal ' materia cure'
+        me->use(3, *me);
+
+        delete src;
+        delete me;
+        delete kiko;
+    }
     return 0;
 }
 
