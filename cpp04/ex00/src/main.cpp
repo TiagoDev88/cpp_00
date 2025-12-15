@@ -1,8 +1,8 @@
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongCat.hpp"
-#include "WrongAnimal.hpp"
+#include "../inc/Cat.hpp"
+#include "../inc/Dog.hpp"
+#include "../inc/WrongCat.hpp"
+#include "../inc/WrongAnimal.hpp"
 
 
 void testSubject()
