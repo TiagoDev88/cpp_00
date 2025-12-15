@@ -1,7 +1,7 @@
 #include "../inc/Character.hpp"
 
 const int Character::_maxInv = 4;
-// tenho que colocar a NULL os ponteiros senao da erro de condition jump
+
 Character::Character() : _name("NoName"), _countEquip(0) 
 {
     for (int i = 0; i < _maxInv; i++)
@@ -47,7 +47,7 @@ Character& Character::operator=(const Character& other)
     }
     return *this;
 }
-//Of course, the Materias must be deleted when a Character is destroyed.
+
 Character::~Character() 
 {
     for (int i = 0; i < _maxInv; i++)

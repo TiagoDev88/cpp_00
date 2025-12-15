@@ -28,7 +28,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
     }
     return *this;
 }
-// limpar aqui o alocado das materias?
+
 MateriaSource::~MateriaSource() 
 {
     for (int i = 0; i < 4; i++)
@@ -54,8 +54,6 @@ void MateriaSource::learnMateria(AMateria* materia)
         }
     }
     std::cout << "Materia Full! I have only 4 slots to learn!" << std::endl;
-    //caso esteja cheio, apagar aqui o material que esta a ser criado!
-    // senao da leaks.
     delete materia;
 }
 
@@ -63,7 +61,6 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 {
     for (int i = 0; i < 4; i++)
     {
-        // verificar antes se o ponteiro tem algo para ir buscar o type.
         if (_materia[i] && _materia[i]->getType() == type) 
             return _materia[i];
     }

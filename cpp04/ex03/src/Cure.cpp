@@ -21,7 +21,7 @@ Cure::~Cure() {}
 
 AMateria* Cure::clone() const
 {
-    return new Cure(); //talvez tenha que colocar o proprio objeto que esta a ser chamado Cure(*this)
+    return new Cure();
 }
 
 void Cure::use(ICharacter& target)

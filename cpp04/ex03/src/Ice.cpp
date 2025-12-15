@@ -21,7 +21,7 @@ Ice::~Ice() {}
 
 AMateria* Ice::clone() const
 {
-    return new Ice(); //talvez tenha que colocar o proprio objeto que esta a ser chamado Ice(*this)
+    return new Ice();
 }
 
 void Ice::use(ICharacter& target)
