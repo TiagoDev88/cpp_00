@@ -8,18 +8,21 @@ class Bureaucrat
 {
     private:
     const std::string _name;
-    unsigned int         _grade;
+    int         _grade;
 
     public:
     Bureaucrat();
+    Bureaucrat(std::string name, int grade);
     ~Bureaucrat();
 
     std::string getName() const;
     int getGrade() const;
 
-    int increment(const unsigned int grade);
-    int decrement(const unsigned int grade);
+    void increment();
+    void decrement();
 
+    void GradeTooHighException() const;
+    void GradeTooLowException() const;
 
 };
 //TODO: talvez tirar o const do std::ostream& os, testar e logo vejo.
