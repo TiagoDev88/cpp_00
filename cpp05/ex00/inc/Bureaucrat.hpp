@@ -3,6 +3,11 @@
 
 
 #include <iostream>
+#include <exception>
+
+#define MAX_GRADE 1
+#define MIN_GRADE 150
+
 
 class Bureaucrat
 {
@@ -21,11 +26,20 @@ class Bureaucrat
     void increment();
     void decrement();
 
-    void GradeTooHighException() const;
-    void GradeTooLowException() const;
+    class GradeTooHighException : public std::exception
+    {
+        public:
+        const char* what() const throw();
+    };
+    
+    class GradeTooLowException : public std::exception
+    {
+        public:
+        const char* what() const throw();
+    };
 
 };
-//TODO: talvez tirar o const do std::ostream& os, testar e logo vejo.
-std::ostream& operator<<(const std::ostream& os, const Bureaucrat& other);
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& other);
 
 #endif
