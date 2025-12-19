@@ -5,11 +5,21 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(42) {}
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) 
 {
     if (grade > MIN_GRADE)
-        GradeTooLowException();
+        throw GradeTooLowException();
     if (grade < MAX_GRADE)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
         this->_grade = grade;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : 
+_name(other._name), _grade(other._grade) {}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+    if (this != &other)
+        this->_grade = other._grade;
+    return *this;
 }
 
 Bureaucrat::~Bureaucrat() {}
