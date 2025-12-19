@@ -32,9 +32,8 @@ void testToHigh()
             s1.increment();
         }
         std::cout << std::endl;
-
-        const std::string nam = "Hellllllooooooo";
-        Bureaucrat s(nam, 3);
+        
+        Bureaucrat s("Kiko", 0);
         for (int i = 0; i < 20; i++)
         {
             std::cout << s << std::endl;
@@ -52,7 +51,6 @@ void testToLow()
 {
     try
     {
-        std::cout << std::endl;
         Bureaucrat first("Kiko", 130);
         for (int i = 0; i < 20; i++)
         {
