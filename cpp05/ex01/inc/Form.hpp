@@ -3,7 +3,10 @@
 
 #include <iostream>
 #include <exception>
-#include "../../ex00/inc/Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
+
+#define MAX_GRADE 1
+#define MIN_GRADE 150
 
 
 class Form

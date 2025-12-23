@@ -28,8 +28,7 @@ the insertion («) operator to print all the form’s information.
 Also, add a beSigned() member function to the Form that
 takes a Bureaucrat as a parameter.
 
-It changes the form’s status to signed if the bureaucrat’s grade
-is high enough (greater than or equal to the required one).
+It changes the form’s status to signed if the bureaucrat’s grade is high enough (greater than or equal to the required one).
 
 Remember, grade 1 is higher than grade 2.
 
