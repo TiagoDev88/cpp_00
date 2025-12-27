@@ -5,6 +5,8 @@
 #include <iostream>
 #include <exception>
 
+#include "Form.hpp"
+
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
@@ -29,7 +31,7 @@ class Bureaucrat
     void decrement();
 
     //talvez chamar a form para passar aqui na funcao.
-    void signForm();
+    void signForm(const Form& form) const;
 
     class GradeTooHighException : public std::exception
     {

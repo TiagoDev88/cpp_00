@@ -65,3 +65,8 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& other)
 
     return os;
 }
+
+void Bureaucrat::signForm(const Form& form) const
+{
+
+}

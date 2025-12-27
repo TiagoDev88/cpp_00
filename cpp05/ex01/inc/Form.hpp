@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <exception>
-#include "../inc/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 #define MAX_GRADE 1
 #define MIN_GRADE 150
