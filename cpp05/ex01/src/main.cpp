@@ -1,74 +1,74 @@
 
 
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
-void testToHigh();
-void testToLow();
+void testFormValid()
+{
+    std::cout << "------Form Valid-------" << std::endl;
+    try
+    {
+        Form v1("Social Security nr 202", 50, 32);
+        Bureaucrat kiko("Francisco", 9);
+
+        std::cout << v1 << std::endl;
+        v1.beSigned(kiko);
+        kiko.signForm(v1);
+        std::cout << v1 << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
+
+void testFormNotValidTooLow()
+{
+    std::cout << "\n------Form Not Valid, Too Low-------" << std::endl;
+    try
+    {
+        Form v1("Social Security nr 42", 50, 32);
+        Bureaucrat kiko("Jose", 51);
+
+        std::cout << v1 << std::endl;
+        v1.beSigned(kiko);
+        kiko.signForm(v1);
+        std::cout << v1 << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
+
+void testFormNotValidTooHigh()
+{
+    std::cout << "\n------Form Not Valid, Too High-------" << std::endl;
+    try
+    {
+        Form v1("Social Security nr 100", 50, 32);
+        Bureaucrat kiko("Manel", 1);
+
+        std::cout << v1 << std::endl;
+        v1.beSigned(kiko);
+        kiko.signForm(v1);
+        std::cout << v1 << std::endl;
+        kiko.increment();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+}
 
 int main(void)
 {
-    testToHigh();
-    testToLow();
-
+    testFormValid();
+    testFormNotValidTooLow();
+    testFormNotValidTooHigh();
     return 0;
 }
 
-void testToHigh()
-{
-    try
-    {
-        Bureaucrat first;
-        for (int i = 0; i < 20; i++)
-        {
-            std::cout << first << std::endl;
-            first.increment();
-        }
-        std::cout << std::endl;
-
-        Bureaucrat s1 = first;
-        for (int i = 0; i < 20; i++)
-        {
-            std::cout << s1 << std::endl;
-            s1.increment();
-        }
-        std::cout << std::endl;
-        
-        Bureaucrat s("Kiko", 0);
-        for (int i = 0; i < 20; i++)
-        {
-            std::cout << s << std::endl;
-            s.increment();
-        }
-        std::cout << std::endl;
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-}
-
-void testToLow()
-{
-    try
-    {
-        Bureaucrat first("Kiko", 130);
-        for (int i = 0; i < 20; i++)
-        {
-            std::cout << first << std::endl;
-            first.decrement();
-        }
-        std::cout << std::endl;
-
-        Bureaucrat s1 = first;
-        for (int i = 0; i < 20; i++)
-        {
-            std::cout << s1 << std::endl;
-            s1.decrement();
-        }
-        std::cout << std::endl;
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-}

@@ -5,6 +5,8 @@
 #include <exception>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
@@ -14,12 +16,12 @@ class Form
     private:
     const std::string _name;
     bool _signed;
-    const int gradeSignIt;
-    const int gradeExecIt;
+    const int _gradeSign;
+    const int _gradeExec;
 
     public:
     Form();
-    Form(std::string name, bool _signed, const int gradeSign, const int gradeExec);
+    Form(std::string name, const int gradeSign, const int gradeExec);
     Form(const Form& other);
     Form& operator=(const Form& other);
     ~Form();
@@ -48,4 +50,4 @@ class Form
 
 std::ostream& operator<<(std::ostream& os, const Form& other);
 
-#endif FORM_HPP
+#endif
