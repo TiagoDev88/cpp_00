@@ -19,8 +19,6 @@ class AForm
     const int _gradeSign;
     const int _gradeExec;
 
-    // porque tem que ser acessivel as subclasses.
-    protected:
     virtual void executeAction() const = 0;
 
     public:
