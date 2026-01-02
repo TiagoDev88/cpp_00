@@ -1,6 +1,6 @@
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 
-NAME        = ex03
+NAME        = ex02
 
 
 BUILD_PATH  = .build
@@ -8,7 +8,8 @@ SRC_PATH    = src
 INC_PATH    = inc
 INCLUDES    = -I$(INC_PATH)
 
-SRCS        = $(addprefix $(SRC_PATH)/, main.cpp)
+SRCS        = $(addprefix $(SRC_PATH)/, main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+										RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp)
 
 OBJS        = $(SRCS:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
 
