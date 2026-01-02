@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AForm_HPP
+#define AForm_HPP
 
 #include <iostream>
 #include <exception>
@@ -11,7 +11,7 @@ class Bureaucrat;
 #define MIN_GRADE 150
 
 
-class Form
+class AForm
 {
     private:
     const std::string _name;
@@ -19,12 +19,16 @@ class Form
     const int _gradeSign;
     const int _gradeExec;
 
+    // porque tem que ser acessivel as subclasses.
+    protected:
+    virtual void executeAction() const = 0;
+
     public:
-    Form();
-    Form(std::string name, const int gradeSign, const int gradeExec);
-    Form(const Form& other);
-    Form& operator=(const Form& other);
-    ~Form();
+    AForm();
+    AForm(std::string name, const int gradeSign, const int gradeExec);
+    AForm(const AForm& other);
+    AForm& operator=(const AForm& other);
+    virtual ~AForm();
 
     const std::string getName() const;
     bool getSigned() const;
@@ -32,6 +36,7 @@ class Form
     int getGradeExecIt() const;
 
     void beSigned(const Bureaucrat& other);
+    void execute(Bureaucrat const &executor) const;
 
     class GradeTooHighException : public std::exception
     {
@@ -44,9 +49,14 @@ class Form
         public:
         const char* what() const throw();
     };
+    
+    class FormNotSignedException : public std::exception {
+    public:
+        const char* what() const throw();
+    };
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& other);
+std::ostream& operator<<(std::ostream& os, const AForm& other);
 
 #endif
