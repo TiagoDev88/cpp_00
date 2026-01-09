@@ -29,7 +29,6 @@ AForm* Intern::makeForm(const std::string& name_form, const std::string& target)
     AForm* form = NULL;
     int num = -1;
 
-
     for (int i = 0; i < 3; i++)
     {
         if (name_form == check[i])
