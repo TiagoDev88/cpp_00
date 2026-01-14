@@ -12,5 +12,15 @@ ScalarConverter::~ScalarConverter() {}
 
 void ScalarConverter::convert(const std::string str)
 {
-    
+    if(str.empty())
+    {
+        
+    }
 }
+
+/*
+  • char
+  • int
+  • float
+  • double
+*/

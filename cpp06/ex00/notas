@@ -33,6 +33,7 @@ You have to handle these pseudo-literals as well
 (you know, for fun): -inf, +inf, and nan.
 
 Write a program to test that your class works as expected.
+
 You have to first detect the type of the literal passed as a 
 parameter, convert it from string to its actual type, 
 then convert it explicitly to the three other data types.
