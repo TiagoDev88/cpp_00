@@ -1,6 +1,6 @@
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 
-NAME        = ex00
+NAME        = convert
 
 
 BUILD_PATH  = .build
@@ -8,7 +8,7 @@ SRC_PATH    = src
 INC_PATH    = inc
 INCLUDES    = -I$(INC_PATH)
 
-SRCS        = $(addprefix $(SRC_PATH)/, main.cpp )
+SRCS        = $(addprefix $(SRC_PATH)/, main.cpp ScalarConverter.cpp)
 
 OBJS        = $(SRCS:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
 
