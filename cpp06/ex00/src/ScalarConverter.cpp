@@ -14,67 +14,28 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 
 ScalarConverter::~ScalarConverter() {}
 
-int detectType(const std::string& str)
-{
-    if (str.length() == 1 && !std::isdigit(str[0]))
-    {
-        std::cout << "Detected type: char" << std::endl;
-        return 0;
-    }
-    if (str.find('.') == std::string::npos && str.find('f') == std::string::npos)
-    {
-        try
-        {
-            std::stoi(str);
-            std::cout << "Detected type: int" << std::endl;
-            return 1;
-        }
-        catch (const std::exception&)
-        {
-            // Not an int
-        }
-    }
-    if (str.find('f') != std::string::npos)
-    {
-        try
-        {
-            std::stof(str);
-            std::cout << "Detected type: float" << std::endl;
-            return 2;
-        }
-        catch (const std::exception&)
-        {
-            // Not a float
-        }
-    }
-    return -1;
-}
 
-void ScalarConverter::convert(const std::string str)
+void ScalarConverter::convert(const std::string &str)
 {
+  int len = str.length();
+  std::cout << len << std::endl;
+  
   if(str.empty())
   {
       std::cerr << "Error: Empty string provided." << std::endl;
       return;
   }
-  switch (detectType(str))
+  //verificar se e char
+  if (len == 1 && !std::isdigit(str[0]))
   {
-  case 0:
-    std::cout << "Detected type: char" << std::endl;
-    break;
-  case 1:
-    std::cout << "Detected type: int" << std::endl;
-    break;
-  case 2:
-    std::cout << "Detected type: float" << std::endl;
-    break;
-  case 3:
-    std::cout << "Detected type: double" << std::endl;
-    break;
-  default:
-    std::cerr << "Error: Unknown type." << std::endl;
-    break;
+    std::cout << "char: " << str << std::endl;
+    std::cout << "int: " << str << std::endl;
+    std::cout << "float: " << str << std::endl;
+    std::cout << "double: " << str << std::endl;
+
+    return ;
   }
+
 }
 
 /*
