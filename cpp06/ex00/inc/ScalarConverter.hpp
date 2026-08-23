@@ -8,6 +8,16 @@
 #include <cstdlib>
 #include <cmath>
 
+enum e_Type
+{
+    SPECIAL,
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE,
+    INVALID = -1
+};
+
 class ScalarConverter
 {
     private:
