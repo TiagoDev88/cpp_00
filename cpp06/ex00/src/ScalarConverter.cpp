@@ -24,19 +24,28 @@ int getType(const std::string &str, size_t len)
 
   //todo talvez aqui, verificar se por exemplo o '.' conta como char ou nao.
   // caso conte, talvez no if, verifico se e superior a 1 caracter, para interpretar sem ser char.
-  if (dot == std::string::npos)
+  if (dot == std::string::npos || len == 1)
   {
     // aqui vai ser int, char
     if ((len == 1 && !std::isdigit(str[0])) || (len == 3 && str[0] == '\'' && str[2] == '\''))
+    {
+      std::cout << "CHAR\n";
       return CHAR;
+    }
     else
+    {
+      std::cout << "INT\n";
       return INT;
+    }
   }
   
   if (f != std::string::npos && dot != std::string::npos)
   {
     // aqui vai ser o float
-
+    if (str[f + 1] == '\0')
+      std::cout << "VALIDO\n";
+    std::cout << "Pos do F-> " << f << "\nPos do . -> " << dot << std::endl;
+    return FLOAT;
   }
 
   if (f == std::string::npos && dot != std::string::npos)
@@ -72,24 +81,24 @@ void ScalarConverter::convert(const std::string &str)
       break;
   }
 
-  int len = str.length();
-  std::cout << len << std::endl;
+  // int len = str.length();
+  // std::cout << len << std::endl;
   
-  if(str.empty())
-  {
-      std::cerr << "Error: Empty string provided." << std::endl;
-      return;
-  }
-  //verificar se e char
-  if (len == 1 && !std::isdigit(str[0]))
-  {
-    std::cout << "char: " << str << std::endl;
-    std::cout << "int: " << str << std::endl;
-    std::cout << "float: " << str << std::endl;
-    std::cout << "double: " << str << std::endl;
+  // if(str.empty())
+  // {
+  //     std::cerr << "Error: Empty string provided." << std::endl;
+  //     return;
+  // }
+  // //verificar se e char
+  // if (len == 1 && !std::isdigit(str[0]))
+  // {
+  //   std::cout << "char: " << str << std::endl;
+  //   std::cout << "int: " << str << std::endl;
+  //   std::cout << "float: " << str << std::endl;
+  //   std::cout << "double: " << str << std::endl;
 
-    return ;
-  }
+  //   return ;
+  // }
 
 }
 
