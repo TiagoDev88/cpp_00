@@ -22,9 +22,7 @@ static int getType(const std::string &str, size_t len)
   size_t dot = str.find(".");
   size_t f = str.find("f");
 
-  //todo talvez aqui, verificar se por exemplo o '.' conta como char ou nao.
-  // caso conte, talvez no if, verifico se e superior a 1 caracter, para interpretar sem ser char.
-  if (dot == std::string::npos || len == 1)
+  if (dot == std::string::npos || len == 1 || (len == 3 && str[0] == '\'' && str[2] == '\''))
   {
     // aqui vai ser int, char
     if ((len == 1 && !std::isdigit(static_cast<unsigned char>(str[0]))) || (len == 3 && str[0] == '\'' && str[2] == '\''))
@@ -35,7 +33,7 @@ static int getType(const std::string &str, size_t len)
       {
         if (i == 0 && (str[i] == '-' || str[i] == '+'))
           i++;
-        if (!std::isdigit(str[i]))
+        if (!std::isdigit(static_cast<unsigned char>(str[i])))
           return INVALID;
       }
       return INT;
@@ -47,9 +45,11 @@ static int getType(const std::string &str, size_t len)
   {
     for(size_t i = 0; i < (len - 1); i++)
     {
+      if (i == 0 && std::isdigit(static_cast<unsigned char>(str[i + 1])) && (str[i] == '-' || str[i] == '+'))
+          i++;
       if (i != dot)
       {
-        if (!std::isdigit(str[i]))
+        if (!std::isdigit(static_cast<unsigned char>(str[i])))
           return INVALID;
       }
     }
@@ -64,9 +64,11 @@ static int getType(const std::string &str, size_t len)
   {
     for (size_t i = 0; i < len; i++)
     {
+      if (i == 0 && std::isdigit(static_cast<unsigned char>(str[i + 1])) && (str[i] == '-' || str[i] == '+'))
+        i++;
       if (i != dot)
       {
-        if (!std::isdigit(str[i]))
+        if (!std::isdigit(static_cast<unsigned char>(str[i])))
           return INVALID;
       }
     }
