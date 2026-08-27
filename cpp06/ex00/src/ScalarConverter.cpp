@@ -110,11 +110,21 @@ static void printInt(const std::string &str)
 {
   char *endPtr;
   double c = std::strtod(str.c_str(), &endPtr); // talvez colocar NULL
-  if (c < INT_MIN || c > INT_MAX)
-    std::cout << "impossible\n";
+
+  if(c < 0 || c > 127)
+    std::cout << "char: impossible" << std::endl;
+  else if(std::isprint(static_cast<int>(c)))
+    std::cout << "char: " << static_cast<unsigned char>(c) << std::endl;
+  else
+    std::cout << "char: Non displayable" << std::endl;;
+  if (c >= static_cast<double>(std::numeric_limits<int>::min()) && c <= static_cast<double>(std::numeric_limits<int>::max()))
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+  else
+    std::cout << "int: impossible\n";
   std::cout << "DOUBLE is -> " << c << std::endl;
-  std::cout << "end is -> " << endPtr << std::endl;
+  std::cout << "end is -> '" << endPtr << "'" << std::endl;
 }
+
 
 void ScalarConverter::convert(const std::string &str)
 {
