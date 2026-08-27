@@ -106,6 +106,16 @@ static void printInvalid(void)
 	std::cout << "double: impossible" << std::endl;
 }
 
+static void printInt(const std::string &str)
+{
+  char *endPtr;
+  double c = std::strtod(str.c_str(), &endPtr); // talvez colocar NULL
+  if (c < INT_MIN || c > INT_MAX)
+    std::cout << "impossible\n";
+  std::cout << "DOUBLE is -> " << c << std::endl;
+  std::cout << "end is -> " << endPtr << std::endl;
+}
+
 void ScalarConverter::convert(const std::string &str)
 {
   if (str.empty())
@@ -127,6 +137,7 @@ void ScalarConverter::convert(const std::string &str)
       break;
     case INT:
       //printInt
+      printInt(str);
       std::cout << "INT\n";
       break;
     case FLOAT:
