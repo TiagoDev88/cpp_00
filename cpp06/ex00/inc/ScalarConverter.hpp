@@ -8,6 +8,7 @@
 #include <cfloat>
 #include <cstdlib>
 #include <cmath>
+#include <iomanip>
 
 enum e_Type
 {

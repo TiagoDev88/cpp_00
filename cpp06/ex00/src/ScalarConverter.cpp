@@ -108,8 +108,7 @@ static void printInvalid(void)
 
 static void printInt(const std::string &str)
 {
-  char *endPtr;
-  double c = std::strtod(str.c_str(), &endPtr); // talvez colocar NULL
+  double c = std::strtod(str.c_str(), NULL);
 
   if(c < 0 || c > 127)
     std::cout << "char: impossible" << std::endl;
@@ -121,8 +120,9 @@ static void printInt(const std::string &str)
     std::cout << "int: " << static_cast<int>(c) << std::endl;
   else
     std::cout << "int: impossible\n";
-  std::cout << "DOUBLE is -> " << c << std::endl;
-  std::cout << "end is -> '" << endPtr << "'" << std::endl;
+
+  std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
+  std::cout << "double: " << std::fixed << std::setprecision(1) << c << std::endl;
 }
 
 
