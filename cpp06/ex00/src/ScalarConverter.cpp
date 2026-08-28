@@ -113,7 +113,7 @@ static void printInt(const std::string &str)
   if(c < 0 || c > 127)
     std::cout << "char: impossible" << std::endl;
   else if(std::isprint(static_cast<int>(c)))
-    std::cout << "char: " << static_cast<unsigned char>(c) << std::endl;
+    std::cout << "char: '" << static_cast<unsigned char>(c) << "'" <<  std::endl;
   else
     std::cout << "char: Non displayable" << std::endl;;
   if (c >= static_cast<double>(std::numeric_limits<int>::min()) && c <= static_cast<double>(std::numeric_limits<int>::max()))
@@ -125,6 +125,26 @@ static void printInt(const std::string &str)
   std::cout << "double: " << std::fixed << std::setprecision(1) << c << std::endl;
 }
 
+static void printFloat(const std::string &str)
+{
+  double c = std::strtod(str.c_str(), NULL);
+
+  if(c < 0 || c > 127)
+    std::cout << "char: impossible" << std::endl;
+  else if(std::isprint(static_cast<int>(c)))
+    std::cout << "char: '" << static_cast<unsigned char>(c) << "'" <<  std::endl;
+  else
+    std::cout << "char: Non displayable" << std::endl;;
+
+  if (c >= static_cast<double>(std::numeric_limits<int>::min()) && c <= static_cast<double>(std::numeric_limits<int>::max()))
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+  else
+    std::cout << "int: impossible\n";
+
+    
+
+
+}
 
 void ScalarConverter::convert(const std::string &str)
 {
@@ -151,7 +171,7 @@ void ScalarConverter::convert(const std::string &str)
       std::cout << "INT\n";
       break;
     case FLOAT:
-      //printFloat
+      printFloat(str);
       std::cout << "FLOAT\n";
       break;
     case DOUBLE:
