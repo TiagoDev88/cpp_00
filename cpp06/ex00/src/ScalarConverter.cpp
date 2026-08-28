@@ -16,7 +16,7 @@ ScalarConverter::~ScalarConverter() {}
 
 static int getType(const std::string &str, size_t len)
 {
-  if (str == "+inf" || str == "-inf" || str == "+inff" || str == "-inff" || str == "nan" || str == "nanf")
+  if (str == "+inf" || str == "-inf" || str == "inf" || str == "+inff" || str == "-inff" || str == "inff" || str == "nan" || str == "nanf")
     return SPECIAL;
   
   size_t dot = str.find(".");
@@ -24,7 +24,6 @@ static int getType(const std::string &str, size_t len)
 
   if (dot == std::string::npos || len == 1 || (len == 3 && str[0] == '\'' && str[2] == '\''))
   {
-    // aqui vai ser int, char
     if ((len == 1 && !std::isdigit(static_cast<unsigned char>(str[0]))) || (len == 3 && str[0] == '\'' && str[2] == '\''))
       return CHAR;
     else
@@ -40,7 +39,6 @@ static int getType(const std::string &str, size_t len)
     }
   }
   
-  // aqui vai ser o float
   if (f != std::string::npos && dot != std::string::npos)
   {
     for(size_t i = 0; i < (len - 1); i++)
@@ -59,7 +57,6 @@ static int getType(const std::string &str, size_t len)
       return INVALID;
   }
 
-  // aqui vai ser o double
   if (f == std::string::npos && dot != std::string::npos)
   {
     for (size_t i = 0; i < len; i++)
@@ -127,6 +124,34 @@ static void printInt(const std::string &str)
 
 static void printFloat(const std::string &str)
 {
+  float c = std::strtof(str.c_str(), NULL);
+
+  if(c < 0 || c > 127)
+    std::cout << "char: impossible" << std::endl;
+  else if(std::isprint(static_cast<int>(c)))
+    std::cout << "char: '" << static_cast<unsigned char>(c) << "'" <<  std::endl;
+  else
+    std::cout << "char: Non displayable" << std::endl;;
+
+  if (c >= static_cast<double>(std::numeric_limits<int>::min()) && c <= static_cast<double>(std::numeric_limits<int>::max()))
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+  else
+    std::cout << "int: impossible\n";
+
+  if (c == std::floor(c))
+    std::cout << "float: " << std::fixed << std::setprecision(1) <<  c << "f" << std::endl;
+  else
+    std::cout << "float: " <<  std::fixed << std::setprecision(std::numeric_limits<float>::digits10) << c << "f" << std::endl;
+
+  double d = static_cast<double>(c);
+  if (d == std::floor(d))
+    std::cout << "double: " << std::fixed << std::setprecision(1) <<  d << std::endl;
+  else
+    std::cout << "double: " << std::fixed << std::setprecision(std::numeric_limits<double>::digits10) << d << std::endl;
+}
+
+static void printDouble(const std::string &str)
+{
   double c = std::strtod(str.c_str(), NULL);
 
   if(c < 0 || c > 127)
@@ -141,11 +166,29 @@ static void printFloat(const std::string &str)
   else
     std::cout << "int: impossible\n";
 
-    
+  float f = static_cast<float>(c);
+  if (f == std::floor(f))
+    std::cout << "float: " << std::fixed << std::setprecision(1) <<  f << "f" << std::endl;
+  else
+    std::cout << "float: " <<  std::fixed << std::setprecision(std::numeric_limits<float>::digits10) << f << "f" << std::endl;
 
-
+  if (c == std::floor(c))
+    std::cout << "double: " << std::fixed << std::setprecision(1) <<  c << std::endl;
+  else
+    std::cout << "double: " << std::fixed << std::setprecision(std::numeric_limits<double>::digits10) << c << std::endl;
 }
 
+static void printSpecial(const std::string &str)
+{
+  double val = std::strtod(str.c_str(), NULL);
+
+  std::cout << "char: impossible" << std::endl;
+  std::cout << "int: impossible" << std::endl;
+  std::cout << "float: " << val << "f" << std::endl;
+  std::cout << "double: " << val << std::endl;
+}
+
+// the float its like 6/7 precision and double is 15/17
 void ScalarConverter::convert(const std::string &str)
 {
   if (str.empty())
@@ -153,30 +196,33 @@ void ScalarConverter::convert(const std::string &str)
     printInvalid();
     return;
   }
+  std::string s = str;
   size_t len = str.length();
-  int type = getType(str, len);
+  bool withQuote = (s.length() == 3 && s[0] == '\'' && s[2] == '\'');
+  
+  if (s.length() != 1 && !withQuote)
+  {
+    for (size_t i = 0; i < len; i++)
+      s[i] = static_cast<char>(std::tolower(static_cast<unsigned char>(s[i])));
+  }
+
+  int type = getType(s, len);
   switch (type)
   {
     case SPECIAL:
-      // printSpecial
-      std::cout << "SPECIAL\n";
+      printSpecial(s);
       break;
     case CHAR:
-      //printChar
-      printChar(str, len);
+      printChar(s, len);
       break;
     case INT:
-      //printInt
-      printInt(str);
-      std::cout << "INT\n";
+      printInt(s);
       break;
     case FLOAT:
-      printFloat(str);
-      std::cout << "FLOAT\n";
+      printFloat(s);
       break;
     case DOUBLE:
-      //printDouble
-      std::cout << "DOUBLE\n";
+      printDouble(s);
       break;
     default:
       printInvalid();

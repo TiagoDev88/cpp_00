@@ -30,12 +30,6 @@ $(BUILD_PATH)/%.o: $(SRC_PATH)/%.cpp
 	@echo "Compiling ..."
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
-
-val: $(NAME)
-	@echo "Running valgrind on $(NAME)..."
-	@valgrind $(V_ARGS) ./$(NAME)
-
-
 clean:
 	@echo "Cleaning object files..."
 	@$(RM) $(OBJS) $(BUILD_PATH)
@@ -46,4 +40,4 @@ fclean: clean
 
 re: fclean all
 	@echo "Rebuilding $(NAME)..."
-.PHONY: all clean fclean re val
+.PHONY: all clean fclean re
