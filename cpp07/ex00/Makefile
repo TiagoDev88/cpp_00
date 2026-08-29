@@ -8,7 +8,7 @@ SRC_PATH    = src
 INC_PATH    = inc
 INCLUDES    = -I$(INC_PATH)
 
-SRCS        = $(addprefix $(SRC_PATH)/, main.cpp Whatever.cpp)
+SRCS        = $(addprefix $(SRC_PATH)/, main.cpp )
 
 OBJS        = $(SRCS:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
 
