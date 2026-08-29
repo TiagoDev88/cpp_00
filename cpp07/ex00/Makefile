@@ -1,0 +1,43 @@
+CXX         = c++
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 
+NAME        = ex00
+
+
+BUILD_PATH  = .build
+SRC_PATH    = src
+INC_PATH    = inc
+INCLUDES    = -I$(INC_PATH)
+
+SRCS        = $(addprefix $(SRC_PATH)/, main.cpp Whatever.cpp)
+
+OBJS        = $(SRCS:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
+
+RM          = rm -fr
+MKDIR       = mkdir -p
+
+V_ARGS      = --leak-check=full --show-leak-kinds=all --track-origins=yes
+
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@echo "Linking ..."
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $@
+	@echo "Build complete!"
+
+$(BUILD_PATH)/%.o: $(SRC_PATH)/%.cpp
+	@$(MKDIR) $(BUILD_PATH)
+	@echo "Compiling ..."
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	@echo "Cleaning object files..."
+	@$(RM) $(OBJS) $(BUILD_PATH)
+
+fclean: clean
+	@echo "Removing executable and build directory..."
+	@$(RM) $(NAME)
+
+re: fclean all
+	@echo "Rebuilding $(NAME)..."
+.PHONY: all clean fclean re
