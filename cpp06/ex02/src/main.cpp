@@ -1,23 +1,18 @@
 #include "Base.hpp"
-#include <ctime>
 
 int main(void)
 {
     std::srand(std::time(NULL));
 
-    for (int i = 0; i < 10; ++i)
-    {
-        Base* p = NULL;
+	Base* inst = generate();
+	Base& instRef = *inst;
+	Base* nul = NULL;
 
-        std::cout << "identify(Base*): ";
-        identify(p);
+	identify(inst);
+	identify(*inst);
+	identify(instRef);
+	identify(nul);
 
-        std::cout << "identify(Base&): ";
-        identify(*p);
-
-        std::cout << "-----" << std::endl;
-
-        delete p;
-    }
-    return 0;
+	delete inst;
+	return 0;
 }

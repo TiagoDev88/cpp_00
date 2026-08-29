@@ -4,6 +4,7 @@
 
 #include <cstdlib> // std::srand()
 #include <iostream>
+#include <ctime>
 
 class Base
 {
