@@ -1,10 +1,9 @@
 #pragma once
 
-
-
 #include <cstdlib> // std::srand()
 #include <iostream>
 #include <ctime>
+#include <exception>
 
 class Base
 {
