@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 template<typename T>
 T max(T const& a, T const &b)
 {
